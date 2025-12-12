@@ -34,3 +34,24 @@ window.addEventListener('scroll', () => {
         navbar.classList.remove('scrolled');
     }
 });
+
+// --- ANIMACIONES AL SCROLLEAR (Scroll Reveal) ---
+const observerOptions = {
+    root: null,
+    rootMargin: '0px',
+    threshold: 0.15 // Se activa cuando el 15% del elemento es visible
+};
+
+const observer = new IntersectionObserver((entries, observer) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            entry.target.classList.add('active'); // Agrega la clase que lo hace aparecer
+            observer.unobserve(entry.target); // Deja de observar (se anima una sola vez)
+        }
+    });
+}, observerOptions);
+
+// Seleccionamos todos los elementos con la clase 'reveal'
+document.querySelectorAll('.reveal').forEach(el => {
+    observer.observe(el);
+});

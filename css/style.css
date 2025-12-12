@@ -59,12 +59,12 @@ img { max-width: 100%; display: block; }
 
 /* 1. Dibujo (Colinas) */
 .logo-icon {
-    height: 50px; /* Tamaño ajustado */
+    height: 40px; /* Tamaño ajustado */
     width: auto;
     object-fit: contain;
     z-index: 2; /* Asegura que esté por encima si hay superposición */
     /* Si quieres superponerlo sobre el texto, puedes usar margen negativo a la derecha */
-    margin-right: -50px;
+    margin-right: -48px;
 }
 
 /* 2. Texto (Imagen de letras) */
@@ -224,3 +224,20 @@ footer { background: #111; color: #777; padding: 25px 0; text-align: center; fon
     
     .contact-wrapper { grid-template-columns: 1fr; }
 }
+
+/* --- ANIMACIONES DE APARICIÓN (SCROLL REVEAL) --- */
+.reveal {
+    opacity: 0;
+    transform: translateY(50px); /* Empieza 50px más abajo */
+    transition: all 0.8s ease-out; /* Tarda 0.8s en subir y aparecer */
+}
+
+.reveal.active {
+    opacity: 1;
+    transform: translateY(0); /* Vuelve a su posición original */
+}
+
+/* Retrasos para efecto "escalera" en tarjetas */
+.delay-100 { transition-delay: 0.1s; }
+.delay-200 { transition-delay: 0.2s; }
+.delay-300 { transition-delay: 0.3s; }

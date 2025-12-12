@@ -22,9 +22,7 @@
         <div class="container nav-container">
             <!-- LOGO COMPUESTO -->
             <a href="#" class="logo">
-                <!-- Imagen 1: El ícono (Colinas) -->
                 <img src="img/logo.jpg" alt="Icono" class="logo-icon">
-                <!-- Imagen 2: El texto (Nombre + Slogan) -->
                 <img src="img/logo-texto.png" alt="DecoParque Texto" class="logo-text-img">
             </a>
 
@@ -43,7 +41,7 @@
     <!-- HERO (PORTADA) -->
     <section id="inicio" class="hero">
         <div class="hero-overlay"></div>
-        <div class="container hero-content">
+        <div class="container hero-content reveal"> <!-- ANIMADO -->
             <h1>Parques con Estilo</h1>
             <p>Transformamos tu espacio verde con sistemas de riego inteligentes, paisajismo de diseño y nivelación profesional.</p>
             <div class="hero-btns">
@@ -56,12 +54,12 @@
     <!-- SERVICIOS -->
     <section id="servicios" class="section">
         <div class="container">
-            <h2 class="section-title">Nuestros Servicios</h2>
-            <p class="section-subtitle">Soluciones integrales para espacios verdes en Zona Norte.</p>
+            <h2 class="section-title reveal">Nuestros Servicios</h2> <!-- ANIMADO -->
+            <p class="section-subtitle reveal">Soluciones integrales para espacios verdes en Zona Norte.</p>
             
             <div class="services-grid">
-                <!-- Servicio 1 -->
-                <div class="service-card">
+                <!-- Servicio 1 (Delay para efecto escalera) -->
+                <div class="service-card reveal">
                     <div class="card-img">
                         <img src="img/servicio-riego.jpg" alt="Riego por aspersión">
                     </div>
@@ -72,7 +70,7 @@
                 </div>
 
                 <!-- Servicio 2 -->
-                <div class="service-card">
+                <div class="service-card reveal delay-100">
                     <div class="card-img">
                         <img src="img/servicio-paisajismo.jpg" alt="Paisajismo">
                     </div>
@@ -83,9 +81,9 @@
                 </div>
 
                 <!-- Servicio 3 -->
-                <div class="service-card">
+                <div class="service-card reveal delay-200">
                     <div class="card-img">
-                        <img src="img/servicio-nivelacion.png" alt="Nivelación">
+                        <img src="img/servicio-nivelacion.jpg" alt="Nivelación">
                     </div>
                     <div class="card-content">
                         <h3><i class="fas fa-tractor"></i> Nivelaciones</h3>
@@ -97,7 +95,7 @@
     </section>
 
     <!-- BARRA DE CONFIANZA -->
-    <section class="trust-bar">
+    <section class="trust-bar reveal">
         <div class="container">
             <p>Más de <strong>15 años</strong> de trayectoria en barrios privados: <em>Nordelta, Villa Nueva, Haras Santa María, Pilar del Este</em> y más.</p>
         </div>
@@ -106,8 +104,8 @@
     <!-- GALERÍA -->
     <section id="galeria" class="section bg-light">
         <div class="container">
-            <h2 class="section-title">Galería de Proyectos</h2>
-            <div class="gallery-grid">
+            <h2 class="section-title reveal">Galería de Proyectos</h2>
+            <div class="gallery-grid reveal"> <!-- Todo el grid se anima junto -->
                 <div class="gallery-item"><img src="img/galeria-1.jpg" alt="Automatización"></div>
                 <div class="gallery-item"><img src="img/galeria-2.jpg" alt="Obra terminada"></div>
                 <div class="gallery-item"><img src="img/galeria-3.jpg" alt="Césped colocado"></div>
@@ -120,7 +118,7 @@
     <section id="contacto" class="section contact-section">
         <div class="container contact-wrapper">
             
-            <div class="contact-info">
+            <div class="contact-info reveal">
                 <h2>Contáctenos</h2>
                 <p>¿Listo para renovar su parque? Envíenos su consulta o llámenos directamente.</p>
                 
@@ -156,12 +154,14 @@
                 </div>
             </div>
 
-            <form class="contact-form">
+            <form class="contact-form reveal delay-100" action="https://formspree.io/f/xpwzyqog" method="POST">
+                <!-- NOTA: He agregado el action de Formspree para que el formulario funcione de verdad. 
+                     Deberás registrarte en Formspree.io y poner tu propio link. Este es uno de ejemplo. -->
                 <h3>Envíenos un mensaje</h3>
-                <input type="text" placeholder="Nombre completo" required>
-                <input type="email" placeholder="Email" required>
-                <input type="tel" placeholder="Teléfono" required>
-                <textarea rows="4" placeholder="¿En qué podemos ayudarle?" required></textarea>
+                <input type="text" name="name" placeholder="Nombre completo" required>
+                <input type="email" name="email" placeholder="Email" required>
+                <input type="tel" name="phone" placeholder="Teléfono" required>
+                <textarea name="message" rows="4" placeholder="¿En qué podemos ayudarle?" required></textarea>
                 <button type="submit" class="btn btn-primary btn-block">Enviar Consulta</button>
             </form>
 
