@@ -159,12 +159,29 @@
                 </div>
             </div>
 
-            <form class="contact-form reveal delay-100" action="https://formspree.io/f/xlgrrrnj" method="POST">
+            <form class="contact-form reveal delay-100" id="contactForm" action="https://formspree.io/f/xlgrrrnj" method="POST">
                 <h3>Envíenos un mensaje</h3>
-                <input type="text" name="name" placeholder="Nombre completo" required>
-                <input type="email" name="email" placeholder="Email" required>
-                <input type="tel" name="phone" placeholder="Teléfono" required>
-                <textarea name="message" rows="4" placeholder="¿En qué podemos ayudarle?" required></textarea>
+                
+                <div class="form-group">
+                    <input type="text" id="name" name="name" placeholder="Nombre completo">
+                    <span class="error-message" id="error-name"></span>
+                </div>
+
+                <div class="form-group">
+                    <input type="email" id="email" name="email" placeholder="Email">
+                    <span class="error-message" id="error-email"></span>
+                </div>
+
+                <div class="form-group">
+                    <input type="tel" id="phone" name="phone" placeholder="Teléfono">
+                    <span class="error-message" id="error-phone"></span>
+                </div>
+
+                <div class="form-group">
+                    <textarea id="message" name="message" rows="4" placeholder="¿En qué podemos ayudarle?"></textarea>
+                    <span class="error-message" id="error-message"></span>
+                </div>
+
                 <button type="submit" class="btn btn-primary btn-block">Enviar Consulta</button>
             </form>
 

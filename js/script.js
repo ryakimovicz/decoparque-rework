@@ -98,3 +98,74 @@ document.addEventListener('click', (e) => {
         waContainer.classList.remove('active-mobile');
     }
 });
+
+// --- VALIDACIÓN DE FORMULARIO ---
+const contactForm = document.getElementById('contactForm');
+
+if (contactForm) {
+    contactForm.addEventListener('submit', function(e) {
+        // Prevenir el envío automático
+        e.preventDefault();
+        
+        let isValid = true;
+        
+        // Obtener campos
+        const name = document.getElementById('name');
+        const email = document.getElementById('email');
+        const phone = document.getElementById('phone');
+        const message = document.getElementById('message');
+        
+        // Funciones de ayuda
+        const setError = (element, messageText) => {
+            const errorDisplay = element.nextElementSibling; // El span .error-message
+            errorDisplay.innerText = messageText;
+            errorDisplay.classList.add('active');
+            element.classList.add('input-error');
+            isValid = false;
+        };
+
+        const clearError = (element) => {
+            const errorDisplay = element.nextElementSibling;
+            errorDisplay.innerText = '';
+            errorDisplay.classList.remove('active');
+            element.classList.remove('input-error');
+        };
+
+        // 1. Validar Nombre
+        if (name.value.trim() === '') {
+            setError(name, 'Por favor, ingrese su nombre completo.');
+        } else {
+            clearError(name);
+        }
+
+        // 2. Validar Email
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (!emailRegex.test(email.value.trim())) {
+            setError(email, 'Ingrese un email válido (ej: nombre@gmail.com).');
+        } else {
+            clearError(email);
+        }
+
+        // 3. Validar Teléfono (Mínimo 8 números)
+        const phoneRegex = /^[0-9\-\+\s]{8,}$/; 
+        if (!phoneRegex.test(phone.value.trim())) {
+            setError(phone, 'Ingrese un teléfono válido (mínimo 8 números).');
+        } else {
+            clearError(phone);
+        }
+
+        // 4. Validar Mensaje
+        if (message.value.trim().length < 10) {
+            setError(message, 'El mensaje es muy corto. Cuéntenos más detalles.');
+        } else {
+            clearError(message);
+        }
+
+        // SI TODO ESTÁ BIEN -> ENVIAR
+        if (isValid) {
+            // Aquí enviamos el formulario a Formspree
+            contactForm.submit();
+            // Opcional: Mostrar un alert o spinner mientras se envía
+        }
+    });
+}

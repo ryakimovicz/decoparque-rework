@@ -356,3 +356,45 @@ footer { background: #111; color: #777; padding: 25px 0; text-align: center; fon
         font-size: 0.8rem;
     }
 }
+
+/* --- VALIDACIÓN DE FORMULARIO --- */
+.form-group {
+    margin-bottom: 15px;
+    position: relative; /* Para posicionar mensajes si fuera necesario */
+}
+
+.contact-form input, 
+.contact-form textarea {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-family: inherit;
+    font-size: 0.95rem;
+    transition: 0.3s;
+    margin-bottom: 5px; /* Espacio para el mensaje de error */
+}
+
+/* Estado de Error en el Input */
+.contact-form input.input-error, 
+.contact-form textarea.input-error {
+    border-color: #e74c3c; /* Rojo */
+    background-color: #fceae9;
+}
+
+/* Mensaje de Error (Texto) */
+.error-message {
+    color: #e74c3c;
+    font-size: 0.8rem;
+    display: block;
+    height: 0; /* Oculto por defecto */
+    overflow: hidden;
+    transition: 0.3s;
+    margin-left: 5px;
+}
+
+/* Cuando hay error, mostramos el mensaje */
+.error-message.active {
+    height: auto;
+    margin-bottom: 10px;
+}
