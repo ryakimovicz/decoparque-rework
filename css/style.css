@@ -10,7 +10,10 @@
 
 * { margin: 0; padding: 0; box-sizing: border-box; }
 
-html { scroll-behavior: smooth; }
+html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 80px;
+}
 
 body {
     font-family: 'Open Sans', sans-serif;
@@ -249,7 +252,7 @@ footer { background: #111; color: #777; padding: 25px 0; text-align: center; fon
     right: 30px;
     z-index: 2000;
     display: flex;
-    flex-direction: column-reverse; /* Para que las opciones salgan arriba */
+    flex-direction: column-reverse;
     align-items: flex-end;
     gap: 15px;
 }
@@ -287,8 +290,8 @@ footer { background: #111; color: #777; padding: 25px 0; text-align: center; fon
     transition: 0.3s ease-in-out;
 }
 
-/* Mostrar opciones al hacer hover en el contenedor */
-.whatsapp-container:hover .whatsapp-options {
+.whatsapp-container:hover .whatsapp-options,
+.whatsapp-container.active-mobile .whatsapp-options {
     opacity: 1;
     visibility: visible;
     transform: translateY(0);
@@ -300,61 +303,53 @@ footer { background: #111; color: #777; padding: 25px 0; text-align: center; fon
     gap: 10px;
     text-decoration: none;
     color: white;
-    background-color: #128c7e; /* Verde oscuro de WA */
+    background-color: #128c7e;
     padding: 10px;
     border-radius: 50px;
     box-shadow: 0 2px 5px rgba(0,0,0,0.2);
     transition: 0.2s;
     font-size: 20px;
-    width: 50px; /* Redondo inicialmente */
+    width: 50px;
     height: 50px;
     justify-content: center;
     overflow: hidden;
-    white-space: nowrap; /* Evita que el texto baje */
+    white-space: nowrap;
 }
 
 .wa-option i { font-size: 20px; }
 
-/* Texto de la etiqueta (aparece al lado) */
 .wa-label {
     font-size: 0.9rem;
     font-family: 'Open Sans', sans-serif;
     font-weight: 600;
-    max-width: 0; /* Oculto por defecto */
+    max-width: 0;
     opacity: 0;
     transition: 0.3s;
 }
 
 .wa-option:hover {
-    width: auto; /* Se estira para mostrar el texto */
+    width: auto;
     padding-left: 20px;
     padding-right: 20px;
-    background-color: var(--primary); /* Cambia a nuestro verde */
+    background-color: var(--primary);
 }
 
 .wa-option:hover .wa-label {
-    max-width: 150px; /* Aparece el texto */
+    max-width: 150px;
     opacity: 1;
     margin-right: 5px;
 }
 
-/* RESPONSIVE: En móvil mostramos el texto siempre para facilitar el toque */
 @media (max-width: 768px) {
     .whatsapp-container { bottom: 20px; right: 20px; }
-    .whatsapp-container.active-mobile .whatsapp-options {
-        opacity: 1;
-        visibility: visible;
-        transform: translateY(0);
-    }
     
-    /* En móvil, las opciones siempre muestran el texto para que se sepa quién es quién */
-    .wa-option {
+    /* En móvil siempre mostramos el texto si está abierto */
+    .whatsapp-container.active-mobile .wa-option {
         width: auto;
         padding-left: 15px;
         padding-right: 15px;
-        border-radius: 20px;
     }
-    .wa-label {
+    .whatsapp-container.active-mobile .wa-label {
         max-width: 150px;
         opacity: 1;
         margin-right: 10px;
