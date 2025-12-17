@@ -398,3 +398,60 @@ footer { background: #111; color: #777; padding: 25px 0; text-align: center; fon
     height: auto;
     margin-bottom: 10px;
 }
+
+/* --- LIGHTBOX (GALERÍA MODAL) --- */
+.lightbox {
+    position: fixed;
+    z-index: 3000; /* Por encima de todo, incluso del navbar */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.9); /* Fondo negro semitransparente */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease;
+}
+
+/* Clase para mostrar el lightbox */
+.lightbox.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+/* La imagen dentro del lightbox */
+.lightbox-content {
+    max-width: 90%;
+    max-height: 80vh;
+    border-radius: 5px;
+    box-shadow: 0 0 20px rgba(0,0,0,0.5);
+    transform: scale(0.8);
+    transition: transform 0.3s ease;
+}
+
+/* Efecto zoom al abrir */
+.lightbox.active .lightbox-content {
+    transform: scale(1);
+}
+
+/* Botón de cerrar (X) */
+.close-lightbox {
+    position: absolute;
+    top: 20px;
+    right: 30px;
+    color: #fff;
+    font-size: 40px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s;
+    z-index: 3001;
+}
+
+.close-lightbox:hover {
+    color: var(--accent); /* Usamos tu color amarillo/accent */
+    text-decoration: none;
+    transform: rotate(90deg); /* Pequeña animación al pasar el mouse */
+}

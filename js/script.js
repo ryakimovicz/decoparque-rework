@@ -169,3 +169,56 @@ if (contactForm) {
         }
     });
 }
+
+// --- LIGHTBOX PARA GALERÍA ---
+const lightbox = document.getElementById('lightbox');
+const lightboxImg = document.getElementById('lightbox-img');
+const closeBtn = document.querySelector('.close-lightbox');
+// Seleccionamos todas las imágenes dentro de .gallery-item
+const galleryImages = document.querySelectorAll('.gallery-item img');
+
+if (lightbox && galleryImages.length > 0) {
+    
+    // 1. Abrir Lightbox al hacer click en una imagen
+    galleryImages.forEach(img => {
+        img.addEventListener('click', () => {
+            // Copiamos la ruta de la imagen clickeada al lightbox
+            lightboxImg.src = img.src;
+            lightboxImg.alt = img.alt;
+            
+            // Mostramos el lightbox
+            lightbox.classList.add('active');
+            
+            // Deshabilitar scroll del body mientras está abierto
+            document.body.style.overflow = 'hidden';
+        });
+    });
+
+    // 2. Función para cerrar Lightbox
+    const closeLightbox = () => {
+        lightbox.classList.remove('active');
+        document.body.style.overflow = 'auto'; // Reactivar scroll
+        
+        // Limpiamos el src después de la animación para que no se vea el cambio brusco
+        setTimeout(() => {
+            lightboxImg.src = '';
+        }, 300);
+    };
+
+    // Cerrar con el botón X
+    closeBtn.addEventListener('click', closeLightbox);
+
+    // Cerrar haciendo click fuera de la imagen (en el fondo oscuro)
+    lightbox.addEventListener('click', (e) => {
+        if (e.target === lightbox) {
+            closeLightbox();
+        }
+    });
+
+    // Cerrar con la tecla ESC
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && lightbox.classList.contains('active')) {
+            closeLightbox();
+        }
+    });
+}
