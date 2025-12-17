@@ -55,3 +55,18 @@ const observer = new IntersectionObserver((entries, observer) => {
 document.querySelectorAll('.reveal').forEach(el => {
     observer.observe(el);
 });
+
+// --- WHATSAPP DUAL MÓVIL ---
+// En móviles, el primer toque abre el menú, el segundo cierra
+const waMain = document.querySelector('.whatsapp-main');
+const waContainer = document.querySelector('.whatsapp-container');
+
+waMain.addEventListener('click', (e) => {
+    // Solo si estamos en pantalla chica (móvil/tablet)
+    if (window.innerWidth <= 768) {
+        // Prevenir acción por defecto si fuera un enlace
+        e.preventDefault(); 
+        // Alternar clase para mostrar opciones
+        waContainer.classList.toggle('active-mobile');
+    }
+});
