@@ -170,55 +170,101 @@ if (contactForm) {
     });
 }
 
-// --- LIGHTBOX PARA GALERÍA ---
+// --- LIGHTBOX CON NAVEGACIÓN Y SWIPE ---
 const lightbox = document.getElementById('lightbox');
 const lightboxImg = document.getElementById('lightbox-img');
 const closeBtn = document.querySelector('.close-lightbox');
-// Seleccionamos todas las imágenes dentro de .gallery-item
+const prevBtn = document.querySelector('.prev-btn');
+const nextBtn = document.querySelector('.next-btn');
 const galleryImages = document.querySelectorAll('.gallery-item img');
+
+let currentIndex = 0; // Para saber qué foto se está viendo
 
 if (lightbox && galleryImages.length > 0) {
     
-    // 1. Abrir Lightbox al hacer click en una imagen
-    galleryImages.forEach(img => {
+    // Función para mostrar imagen según el índice
+    const showImage = (index) => {
+        if (index >= galleryImages.length) {
+            currentIndex = 0; // Vuelve al principio
+        } else if (index < 0) {
+            currentIndex = galleryImages.length - 1; // Va al final
+        } else {
+            currentIndex = index;
+        }
+
+        const img = galleryImages[currentIndex];
+        lightboxImg.src = img.src;
+        lightboxImg.alt = img.alt;
+    };
+
+    // Abrir Lightbox al hacer click
+    galleryImages.forEach((img, index) => {
         img.addEventListener('click', () => {
-            // Copiamos la ruta de la imagen clickeada al lightbox
-            lightboxImg.src = img.src;
-            lightboxImg.alt = img.alt;
-            
-            // Mostramos el lightbox
+            currentIndex = index; // Guardamos cuál se clickeó
+            showImage(currentIndex);
             lightbox.classList.add('active');
-            
-            // Deshabilitar scroll del body mientras está abierto
             document.body.style.overflow = 'hidden';
         });
     });
 
-    // 2. Función para cerrar Lightbox
+    // Botones de Navegación
+    nextBtn.addEventListener('click', (e) => {
+        e.stopPropagation(); // Evita que se cierre el lightbox al clickear la flecha
+        showImage(currentIndex + 1);
+    });
+
+    prevBtn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        showImage(currentIndex - 1);
+    });
+
+    // Cerrar Lightbox
     const closeLightbox = () => {
         lightbox.classList.remove('active');
-        document.body.style.overflow = 'auto'; // Reactivar scroll
-        
-        // Limpiamos el src después de la animación para que no se vea el cambio brusco
-        setTimeout(() => {
-            lightboxImg.src = '';
-        }, 300);
+        document.body.style.overflow = 'auto';
+        setTimeout(() => { lightboxImg.src = ''; }, 300);
     };
 
-    // Cerrar con el botón X
     closeBtn.addEventListener('click', closeLightbox);
 
-    // Cerrar haciendo click fuera de la imagen (en el fondo oscuro)
+    // Cerrar al clickear fuera de la imagen
     lightbox.addEventListener('click', (e) => {
         if (e.target === lightbox) {
             closeLightbox();
         }
     });
 
-    // Cerrar con la tecla ESC
+    // 4. Navegación por Teclado
     document.addEventListener('keydown', (e) => {
-        if (e.key === 'Escape' && lightbox.classList.contains('active')) {
-            closeLightbox();
-        }
+        if (!lightbox.classList.contains('active')) return;
+
+        if (e.key === 'Escape') closeLightbox();
+        if (e.key === 'ArrowRight') showImage(currentIndex + 1);
+        if (e.key === 'ArrowLeft') showImage(currentIndex - 1);
     });
+
+    // 5. SOPORTE TÁCTIL (SWIPE)
+    let touchStartX = 0;
+    let touchEndX = 0;
+
+    lightbox.addEventListener('touchstart', (e) => {
+        touchStartX = e.changedTouches[0].screenX;
+    }, {passive: true});
+
+    lightbox.addEventListener('touchend', (e) => {
+        touchEndX = e.changedTouches[0].screenX;
+        handleSwipe();
+    }, {passive: true});
+
+    const handleSwipe = () => {
+        const threshold = 50;
+        // Deslizar a la izquierda (Siguiente)
+        if (touchStartX - touchEndX > threshold) {
+            showImage(currentIndex + 1);
+        }
+        // Deslizar a la derecha (Anterior)
+        if (touchEndX - touchStartX > threshold) {
+            showImage(currentIndex - 1);
+        }
+    };
 }

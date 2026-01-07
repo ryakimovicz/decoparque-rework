@@ -23,7 +23,7 @@ body {
 
 h1, h2, h3 { font-family: 'Montserrat', sans-serif; font-weight: 700; }
 a { text-decoration: none; color: inherit; transition: 0.3s; }
-ul { list-style: none; }htness(0) inver
+ul { list-style: none; }
 img { max-width: 100%; display: block; }
 
 .container {
@@ -509,4 +509,46 @@ footer { background: #111; color: #777; padding: 25px 0; text-align: center; fon
     color: var(--accent); /* Color amarillo/accent */
     text-decoration: none;
     transform: rotate(90deg); /* Pequeña animación al pasar el mouse */
+}
+
+/* --- NAVEGACIÓN LIGHTBOX --- */
+
+.lightbox-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    color: white;
+    font-size: 30px;
+    padding: 20px;
+    cursor: pointer;
+    z-index: 3002; /* Por encima de la imagen */
+    transition: 0.3s;
+    user-select: none; /* Evita que se seleccione el texto al hacer click rápido */
+    background-color: rgba(0,0,0,0.3); /* Fondo sutil para que se vea siempre */
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.lightbox-btn:hover {
+    background-color: var(--primary); /* Se pone verde al pasar el mouse */
+    color: white;
+}
+
+.prev-btn { left: 20px; }
+.next-btn { right: 20px; }
+
+/* Ajuste para móviles: Flechas más chicas y pegadas al borde */
+@media (max-width: 768px) {
+    .lightbox-btn {
+        width: 45px;
+        height: 45px;
+        font-size: 20px;
+        background-color: rgba(0,0,0,0.5); /* Un poco más oscuro en móvil para contraste */
+    }
+    .prev-btn { left: 10px; }
+    .next-btn { right: 10px; }
 }
