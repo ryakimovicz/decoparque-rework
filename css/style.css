@@ -541,14 +541,10 @@ footer { background: #111; color: #777; padding: 25px 0; text-align: center; fon
 .prev-btn { left: 20px; }
 .next-btn { right: 20px; }
 
-/* Ajuste para móviles: Flechas más chicas y pegadas al borde */
+/* Ajuste para móviles */
 @media (max-width: 768px) {
+    /* Ocultamos las flechas porque ya tenemos swipe táctil */
     .lightbox-btn {
-        width: 45px;
-        height: 45px;
-        font-size: 20px;
-        background-color: rgba(0,0,0,0.5); /* Un poco más oscuro en móvil para contraste */
+        display: none !important;
     }
-    .prev-btn { left: 10px; }
-    .next-btn { right: 10px; }
 }
