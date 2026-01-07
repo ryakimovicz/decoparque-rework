@@ -81,20 +81,25 @@ revealElements.forEach(el => revealObserver.observe(el));
 const waMain = document.querySelector('.whatsapp-main');
 const waContainer = document.querySelector('.whatsapp-container');
 
-// Solo en dispositivos táctiles o móviles
 if (waMain) {
     waMain.addEventListener('click', (e) => {
-        // Si la pantalla es chica (móvil/tablet)
-        if (window.innerWidth <= 768) {
-            // Alternar clase para mostrar opciones
-            waContainer.classList.toggle('active-mobile');
-        }
+        // Quitamos la restricción de ancho de pantalla.
+        // Ahora el click funciona en PC y en Celular.
+        
+        e.preventDefault();
+        e.stopPropagation(); // Evita que el click pase al documento y se cierre inmediatamente
+        
+        // INTERRUPTOR: 
+        // En PC: Si hacés click, se fija el menú. Si volvés a hacer click, se "desfija".
+        // En Móvil: Abre/Cierra.
+        waContainer.classList.toggle('active-mobile');
     });
 }
 
-// Cerrar menú de WhatsApp al hacer click fuera
+// Cerrar menú al tocar en cualquier otro lado de la pantalla
 document.addEventListener('click', (e) => {
-    if (waContainer && !waContainer.contains(e.target)) {
+    // Si el menú está abierto Y el click NO fue dentro del contenedor...
+    if (waContainer && waContainer.classList.contains('active-mobile') && !waContainer.contains(e.target)) {
         waContainer.classList.remove('active-mobile');
     }
 });
