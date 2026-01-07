@@ -94,6 +94,26 @@ img { max-width: 100%; display: block; }
 .hamburger { display: none; color: var(--white); font-size: 1.5rem; cursor: pointer; }
 .navbar.scrolled .hamburger { color: var(--text-dark); }
 
+/* --- AJUSTE DE ALTURA NAVBAR EN MÓVIL --- */
+@media (max-width: 768px) {
+    
+    /* Barra más fina (menos relleno arriba/abajo) */
+    .navbar, 
+    .navbar.scrolled {
+        padding: 5px 0;
+    }
+
+    /* Logo más chico para que entre en la barra fina */
+    .logo-icon {
+        height: 30px;
+    }
+    
+    /* Ajuste de posición del botón menú */
+    .hamburger {
+        font-size: 1.4rem;
+    }
+}
+
 /* --- HERO --- */
 .hero {
     height: 100vh;
