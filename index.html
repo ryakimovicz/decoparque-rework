@@ -16,6 +16,8 @@
     <meta property="og:image" content="https://ryakimovicz.github.io/decoparque-rework/img/logo.jpg"> <meta property="og:url" content="https://ryakimovicz.github.io/decoparque-rework/">
     <meta property="og:type" content="website">
 
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
     
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
@@ -37,9 +39,9 @@
                 <li><a href="#galeria">Trabajos</a></li>
                 <li><a href="#contacto" class="btn-nav">Contacto</a></li>
             </ul>
-            <div class="hamburger">
+            <button class="hamburger" type="button" aria-label="Abrir menú">
                 <i class="fas fa-bars"></i>
-            </div>
+            </button>
         </div>
     </nav>
 
@@ -177,21 +179,25 @@
                 <h3>Envíenos un mensaje</h3>
                 
                 <div class="form-group">
+                    <label for="name" class="sr-only">Nombre completo</label>
                     <input type="text" id="name" name="name" placeholder="Nombre completo">
                     <span class="error-message" id="error-name"></span>
                 </div>
 
                 <div class="form-group">
+                    <label for="email" class="sr-only">Email</label>
                     <input type="email" id="email" name="email" placeholder="Email">
                     <span class="error-message" id="error-email"></span>
                 </div>
 
                 <div class="form-group">
+                    <label for="phone" class="sr-only">Teléfono</label>
                     <input type="tel" id="phone" name="phone" placeholder="Teléfono">
                     <span class="error-message" id="error-phone"></span>
                 </div>
 
                 <div class="form-group">
+                    <label for="message" class="sr-only">Mensaje</label>
                     <textarea id="message" name="message" rows="4" placeholder="¿En qué podemos ayudarle?"></textarea>
                     <span class="error-message" id="error-message"></span>
                 </div>
@@ -223,7 +229,7 @@
             </a>
         </div>
         <!-- Botón Principal -->
-        <div class="whatsapp-main">
+        <div class="whatsapp-main" role="button" tabindex="0" aria-label="Opciones de contacto">
             <i class="fab fa-whatsapp"></i>
         </div>
     </div>
@@ -236,8 +242,6 @@
         
         <img class="lightbox-content" id="lightbox-img" src="" alt="Imagen ampliada">
     </div>
-
-    <script src="js/script.js"></script>
 
     <script src="js/script.js"></script>
 </body>

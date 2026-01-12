@@ -116,7 +116,7 @@ img { max-width: 100%; display: block; }
 
 /* --- HERO --- */
 .hero {
-    height: 100vh;
+    min-height: 100vh;
     background: url('../img/hero-bg.jpg') no-repeat center center/cover;
     position: relative;
     display: flex;
@@ -186,7 +186,7 @@ img { max-width: 100%; display: block; }
 /* Celulares */
 @media (max-width: 768px) {
     .hero-brand {
-        max-width: 6400px;
+        max-width: 640px;
     }
 }
 
@@ -596,4 +596,24 @@ footer { background: #111; color: #777; padding: 25px 0; text-align: center; fon
     .lightbox-btn {
         display: none !important;
     }
+}
+
+/* --- ACCESIBILIDAD --- */
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+}
+
+button.hamburger {
+    background: none;
+    border: none;
+    padding: 0;
+    font-family: inherit;
 }
