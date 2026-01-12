@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Galería de Trabajos | DecoParque</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Open+Sans:wght@400;600&display=swap"
+      rel="stylesheet"
+    />
+
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+    />
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body>
+    <!-- NAVEGACIÓN GALERÍA -->
+    <nav class="navbar scrolled">
+      <div class="container nav-container">
+        <a href="index.html" class="logo">
+          <img
+            src="img/logo.jpg"
+            alt="Icono"
+            class="logo-icon"
+            style="opacity: 1; visibility: visible; transform: none"
+          />
+        </a>
+
+        <ul class="nav-menu gallery-nav">
+          <li><a href="index.html">Inicio</a></li>
+          <li>
+            <a href="#" class="filter-btn active" data-filter="all">Todas</a>
+          </li>
+          <li><a href="#" class="filter-btn" data-filter="riego">Riego</a></li>
+          <li>
+            <a href="#" class="filter-btn" data-filter="paisajismo"
+              >Paisajismo</a
+            >
+          </li>
+          <li>
+            <a href="#" class="filter-btn" data-filter="nivelacion"
+              >Nivelaciones</a
+            >
+          </li>
+        </ul>
+
+        <button class="hamburger" type="button" aria-label="Abrir menú">
+          <i class="fas fa-bars"></i>
+        </button>
+      </div>
+    </nav>
+
+    <!-- HEADER SIMPLIFICADO -->
+    <section
+      class="section bg-light"
+      style="padding-top: 120px; padding-bottom: 20px"
+    >
+      <div class="container">
+        <h2 class="section-title">Nuestros Trabajos</h2>
+        <p class="section-subtitle">
+          Explora nuestra galería completa de proyectos.
+        </p>
+      </div>
+    </section>
+
+    <!-- GALERÍA COMPLETA -->
+    <section class="section" style="padding-top: 0">
+      <div class="container">
+        <div class="gallery-grid" id="full-gallery">
+          <!-- RIEGO -->
+          <div class="gallery-item" data-category="riego">
+            <img
+              src="img/inicio-8.jpg"
+              alt="Computadora Hunter"
+              loading="lazy"
+            />
+          </div>
+          <div class="gallery-item" data-category="riego">
+            <img
+              src="img/servicio-riego.jpg"
+              alt="Riego por aspersión"
+              loading="lazy"
+            />
+          </div>
+
+          <!-- PAISAJISMO -->
+          <div class="gallery-item" data-category="paisajismo">
+            <img
+              src="img/inicio-1.jpg"
+              alt="Decoración de exteriores"
+              loading="lazy"
+            />
+          </div>
+          <div class="gallery-item" data-category="paisajismo">
+            <img src="img/inicio-7.jpg" alt="Cantero florido" loading="lazy" />
+          </div>
+          <div class="gallery-item" data-category="paisajismo">
+            <img
+              src="img/servicio-paisajismo.jpg"
+              alt="Cercos vivos"
+              loading="lazy"
+            />
+          </div>
+
+          <!-- NIVELACIONES Y CESPED -->
+          <div class="gallery-item" data-category="nivelacion">
+            <img
+              src="img/inicio-2.jpg"
+              alt="Nivelación con tierra"
+              loading="lazy"
+            />
+          </div>
+          <div class="gallery-item" data-category="nivelacion">
+            <img
+              src="img/inicio-4.jpg"
+              alt="Nivelación terreno"
+              loading="lazy"
+            />
+          </div>
+          <div class="gallery-item" data-category="nivelacion">
+            <img
+              src="img/inicio-5.jpg"
+              alt="Maquinaria Bobcat"
+              loading="lazy"
+            />
+          </div>
+          <div class="gallery-item" data-category="nivelacion">
+            <img
+              src="img/inicio-6.jpg"
+              alt="Colocación de césped"
+              loading="lazy"
+            />
+          </div>
+          <div class="gallery-item" data-category="nivelacion">
+            <img
+              src="img/servicio-nivelacion.jpg"
+              alt="Movimiento de suelos"
+              loading="lazy"
+            />
+          </div>
+
+          <!-- OTRAS (Generales o repetir si faltan fotos reales) -->
+          <div class="gallery-item" data-category="paisajismo">
+            <img src="img/inicio-3.jpg" alt="Obra terminada" loading="lazy" />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FOOTER (Mismo que index) -->
+    <footer>
+      <div class="container footer-content">
+        <div class="footer-info">
+          <p>&copy; 2025 DecoParque. Parques con Estilo.</p>
+          <p class="designer">Rediseñado por Román Yakimovicz</p>
+        </div>
+        <div class="footer-qr">
+          <a
+            href="http://qr.afip.gob.ar/?qr=CmD966UiE2sXOr41kw2c_g,,"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <img
+              src="img/data-fiscal.jpg"
+              alt="QR Data Fiscal"
+              class="data-fiscal-img"
+            />
+          </a>
+        </div>
+      </div>
+    </footer>
+
+    <!-- LIGHTBOX (Reutilizado) -->
+    <div id="lightbox" class="lightbox">
+      <span class="close-lightbox">&times;</span>
+      <span class="lightbox-btn prev-btn"
+        ><i class="fas fa-chevron-left"></i
+      ></span>
+      <span class="lightbox-btn next-btn"
+        ><i class="fas fa-chevron-right"></i
+      ></span>
+      <img
+        class="lightbox-content"
+        id="lightbox-img"
+        src=""
+        alt="Imagen ampliada"
+      />
+    </div>
+
+    <!-- SCRIPT REUTILIZADO -->
+    <script src="js/script.js"></script>
+  </body>
+</html>

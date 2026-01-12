@@ -25,25 +25,27 @@ document.querySelectorAll(".nav-menu li a").forEach((link) => {
     icon.classList.add("fa-bars");
 
     // --- SMOOTH SCROLL CON OFFSET (NUEVO) ---
-    // Prevenir el comportamiento por defecto del enlace
-    e.preventDefault();
-
-    // Obtener el ID de la sección destino (ej: "#servicios")
+    // Obtener el ID de la sección destino
     const targetId = link.getAttribute("href");
-    const targetSection = document.querySelector(targetId);
 
-    if (targetSection) {
-      // Calcular la posición restando la altura del navbar (aprox 70-80px)
-      // Ajusta el valor 80 según la altura real de tu navbar
-      const headerOffset = 80;
-      const elementPosition = targetSection.getBoundingClientRect().top;
-      const offsetPosition = elementPosition + window.scrollY - headerOffset;
-
-      window.scrollTo({
-        top: offsetPosition,
-        behavior: "smooth",
-      });
+    // Si es un enlace interno (empieza con #) y no es solo "#" (filtros)
+    if (targetId.startsWith("#") && targetId.length > 1) {
+        e.preventDefault();
+        
+        const targetSection = document.querySelector(targetId);
+        
+        if (targetSection) {
+            const headerOffset = 80;
+            const elementPosition = targetSection.getBoundingClientRect().top;
+            const offsetPosition = elementPosition + window.scrollY - headerOffset;
+        
+            window.scrollTo({
+                top: offsetPosition,
+                behavior: "smooth",
+            });
+        }
     }
+    // Si es un enlace a otra página (como index.html), dejamos que navegue normalmente.
   });
 });
 
@@ -284,4 +286,34 @@ if (lightbox && galleryImages.length > 0) {
       showImage(currentIndex - 1);
     }
   };
+}
+
+// --- FILTRADO DE GALERÍA (NUEVO) ---
+const filterBtns = document.querySelectorAll('.filter-btn');
+const galleryItems = document.querySelectorAll('.gallery-item');
+
+if (filterBtns.length > 0) {
+    filterBtns.forEach(btn => {
+        btn.addEventListener('click', (e) => {
+            e.preventDefault();
+
+            // 1. Gestionar clase activa en botones
+            filterBtns.forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+
+            // 2. Obtener filtro
+            const filterValue = btn.getAttribute('data-filter');
+
+            // 3. Filtrar imágenes
+            galleryItems.forEach(item => {
+                if (filterValue === 'all' || item.getAttribute('data-category') === filterValue) {
+                    item.classList.remove('hide');
+                    item.classList.add('show');
+                } else {
+                    item.classList.remove('show');
+                    item.classList.add('hide');
+                }
+            });
+        });
+    });
 }

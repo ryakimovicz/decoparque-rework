@@ -107,15 +107,18 @@ img {
   font-weight: 600;
   font-size: 0.95rem;
   text-transform: uppercase;
+  transition: 0.3s;
 }
-.nav-menu li a:hover {
+.nav-menu li a:hover,
+.filter-btn.active {
   color: var(--accent);
 }
 
 .navbar.scrolled .nav-menu li a {
   color: var(--text-dark);
 }
-.navbar.scrolled .nav-menu li a:hover {
+.navbar.scrolled .nav-menu li a:hover,
+.navbar.scrolled .filter-btn.active {
   color: var(--primary);
 }
 
@@ -423,6 +426,26 @@ img {
 .gallery-item:hover img {
   transform: scale(1.05);
   filter: brightness(0.8);
+}
+
+/* --- FILTRADO GALERÍA --- */
+.gallery-item.hide {
+  display: none;
+}
+
+.gallery-item.show {
+  animation: fadeIn 0.5s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
 }
 
 /* --- GALERÍA MÓVIL (2 COLUMNAS) --- */
