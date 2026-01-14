@@ -31,22 +31,10 @@
           />
         </a>
 
-        <ul class="nav-menu gallery-nav">
+        <ul class="nav-menu">
           <li><a href="index.html">Inicio</a></li>
-          <li>
-            <a href="#" class="filter-btn active" data-filter="all">Todas</a>
-          </li>
-          <li><a href="#" class="filter-btn" data-filter="riego">Riego</a></li>
-          <li>
-            <a href="#" class="filter-btn" data-filter="paisajismo"
-              >Paisajismo</a
-            >
-          </li>
-          <li>
-            <a href="#" class="filter-btn" data-filter="nivelacion"
-              >Nivelaciones</a
-            >
-          </li>
+          <li><a href="index.html#servicios">Servicios</a></li>
+          <li><a href="index.html#contacto" class="btn-nav">Contacto</a></li>
         </ul>
 
         <button class="hamburger" type="button" aria-label="Abrir menú">
@@ -65,11 +53,23 @@
         <p class="section-subtitle">
           Explora nuestra galería completa de proyectos.
         </p>
+
+        <!-- NUEVOS FILTROS DE GALERÍA -->
+        <div class="gallery-filters">
+          <button class="filter-btn active" data-filter="all">Todas</button>
+          <button class="filter-btn" data-filter="riego">Riego</button>
+          <button class="filter-btn" data-filter="paisajismo">
+            Paisajismo
+          </button>
+          <button class="filter-btn" data-filter="nivelacion">
+            Nivelaciones
+          </button>
+        </div>
       </div>
     </section>
 
     <!-- GALERÍA COMPLETA -->
-    <section class="section" style="padding-top: 0">
+    <section class="section" style="padding-top: 40px">
       <div class="container">
         <div class="gallery-grid" id="full-gallery">
           <!-- RIEGO -->
