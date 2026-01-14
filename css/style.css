@@ -663,6 +663,13 @@ footer {
   flex-wrap: wrap;
 }
 
+/* Espacio para que el botón de WhatsApp no tape el QR SOLO en 1024px */
+@media (min-width: 769px) and (max-width: 1024px) {
+  .footer-content {
+    padding-right: 90px;
+  }
+}
+
 .footer-info {
   text-align: left;
 }
