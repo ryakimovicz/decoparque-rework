@@ -311,6 +311,36 @@ img {
   transform: translateY(-3px);
 }
 
+.btn-whatsapp {
+  background: #25d366;
+  color: var(--white);
+  border: 2px solid #25d366;
+  box-shadow: 0 4px 15px rgba(37, 211, 102, 0.4);
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+}
+.btn-whatsapp:hover {
+  background: #128c7e;
+  border-color: #128c7e;
+  color: var(--white);
+  transform: translateY(-3px);
+}
+
+.contact-buttons {
+  margin-bottom: 25px;
+  display: flex;
+  gap: 15px;
+  flex-wrap: wrap;
+}
+
+/* Override para botones de contacto: En tablets (>=768px) force width: auto */
+@media (min-width: 768px) {
+  .contact-buttons .btn {
+    width: auto;
+  }
+}
+
 /* --- SECCIONES --- */
 .section {
   padding: 80px 0;
